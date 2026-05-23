@@ -1,65 +1,549 @@
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
+import {
+  Menu,
+  X,
+  ArrowUpRight,
+  Sparkles,
+  ConciergeBell,
+  HeartHandshake,
+  Plus,
+} from "lucide-react";
+import Link from "next/link";
+
+const faqs = [
+  {
+    question: "What is this platform for?",
+    answer:
+      "Inter Cafe is a community-first social platform where people connect through shared interests, join meaningful conversations, and discover services in one integrated marketplace.",
+  },
+  {
+    question: "Can users create their own communities?",
+    answer:
+      "Yes, users can create and manage their own public, restricted, or private communities.",
+  },
+  {
+    question: "What can users post?",
+    answer:
+      "Users can share posts, media, discussions, links, reviews, and trending content.",
+  },
+  {
+    question: "Is content moderated?",
+    answer:
+      "Yes, we use AI-assisted moderation and community controls to help create healthier discussions.",
+  },
+  {
+    question: "Is there a free plan?",
+    answer:
+      "Yes. Users can access the platform for free with limited marketplace posting options.",
+  },
+  {
+    question: "How does the marketplace work?",
+    answer:
+      "List services and discover offerings through a community-powered marketplace with categories and profiles.",
+  },
+  {
+    question: "Can users message each other?",
+    answer:
+      "Yes, you can move conversations into direct messages and group chats.",
+  },
+];
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(4);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="min-h-screen bg-[#000000] text-white font-sans flex flex-col justify-between overflow-x-hidden selection:bg-[#F6339A] selection:text-white">
+      {/* Navigation Header */}
+      <header className="w-full max-w-[1440px] mx-auto px-6 py-6 md:py-8 flex items-center justify-between relative z-50">
+        {/* Logo and Brand */}
+        <div className="flex items-center gap-3 shrink-0">
+          <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/logo.png"
+              alt="Inter Cafe Logo"
+              width={32}
+              height={32}
+              className="object-cover w-full h-full"
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+          <span className="text-xl font-semibold tracking-tight text-white select-none">
+            Inter Cafe
+          </span>
+        </div>
+
+        {/* Desktop Navigation Links with Connecting Lines */}
+        <div className="hidden md:flex items-center flex-1">
+          {/* Left Connecting Line */}
+          <div className="flex-1 h-[1px] bg-zinc-800/80 mx-8"></div>
+
+          {/* Nav Links */}
+          <nav className="flex items-center gap-8 shrink-0 text-sm font-medium text-zinc-400">
+            <Link
+              href="#how-it-works"
+              className="hover:text-white transition-colors duration-200"
+            >
+              How It Works
+            </Link>
+            <Link
+              href="#features"
+              className="hover:text-white transition-colors duration-200"
+            >
+              Features
+            </Link>
+            <Link
+              href="#why-it-matters"
+              className="hover:text-white transition-colors duration-200"
+            >
+              Why It Matters
+            </Link>
+            <Link
+              href="#faqs"
+              className="hover:text-white transition-colors duration-200"
+            >
+              FAQ&apos;s
+            </Link>
+          </nav>
+
+          {/* Right Connecting Line */}
+          <div className="flex-1 h-[1px] bg-zinc-800/80 mx-8"></div>
+        </div>
+
+        {/* CTA Button & Mobile Menu Toggle */}
+        <div className="flex items-center gap-4 shrink-0">
+          {/* Desktop CTA */}
+          <Link
+            href="#get-started"
+            className="hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-[#FF7826] text-white font-semibold text-sm transition-all duration-300 hover:bg-[#FF7826]/90 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#FF7826]/20"
           >
-            Documentation
-          </a>
+            Get Started
+          </Link>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-zinc-400 hover:text-white focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 bg-[#000000] z-40 flex flex-col justify-between p-6 pt-24 animate-in fade-in slide-in-from-top-4 duration-300 md:hidden">
+          <nav className="flex flex-col gap-6 text-2xl font-medium text-zinc-400">
+            <Link
+              href="#how-it-works"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-white transition-colors py-2 border-b border-zinc-900"
+            >
+              How It Works
+            </Link>
+            <Link
+              href="#features"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-white transition-colors py-2 border-b border-zinc-900"
+            >
+              Features
+            </Link>
+            <Link
+              href="#why-it-matters"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-white transition-colors py-2 border-b border-zinc-900"
+            >
+              Why It Matters
+            </Link>
+            <Link
+              href="#faqs"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-white transition-colors py-2 border-b border-zinc-900"
+            >
+              FAQ&apos;s
+            </Link>
+          </nav>
+
+          <div className="flex flex-col gap-4">
+            <Link
+              href="#get-started"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-center py-4 rounded-xl bg-[#FF7826] text-white font-semibold text-base shadow-lg shadow-[#FF7826]/20"
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Hero Section */}
+      <main className="flex-1 w-full max-w-[1440px] mx-auto px-6 pt-8 pb-16 md:pt-16 md:pb-24 flex flex-col justify-center relative">
+        {/* Title Grid */}
+        <div className="w-full relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Title Line 1 Container */}
+            <div className="lg:col-span-8 relative">
+              {/* Badge 2: Floating below Platform */}
+              <div className="absolute -bottom-45 left-4 md:left-[10%] transform -rotate-[2deg] bg-[#F6339A] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-lg shadow-xl shadow-[#F6339A]/20 z-20 select-none animate-bounce-slow">
+                Innovative Solutions Group
+              </div>
+
+              <h1 className="text-white text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-sans font-semibold leading-[1.05] tracking-tight text-left select-none">
+                {/* Avatar and circles graphics inline element */}
+                <span className="inline-flex items-center mr-3 md:mr-5 align-middle">
+                  {/* Left horizontal line with dot */}
+                  <span className="w-8 sm:w-16 h-[2px] bg-white relative shrink-0">
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white"></span>
+                  </span>
+
+                  {/* Overlapping Avatar & Color Circles */}
+                  <span className="flex items-center -space-x-3 md:-space-x-4 shrink-0">
+                    {/* User Avatar */}
+                    <div className="w-10 h-10 sm:w-16 sm:h-16 md:w-[72px] md:h-[72px] rounded-full border-2 border-white overflow-hidden bg-zinc-800 shrink-0 relative transition-transform duration-300 hover:scale-110 z-30 hover:z-40">
+                      <Image
+                        src="/avatar.jpg"
+                        alt="User Avatar"
+                        width={72}
+                        height={72}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {/* Purple Circle */}
+                    <div className="w-10 h-10 sm:w-16 md:h-[72px] rounded-full border-2 border-white bg-[#8B5CF6] shrink-0 relative transition-transform duration-300 hover:scale-110 z-20 hover:z-40"></div>
+                    {/* Pink Circle */}
+                    <div className="w-10 h-10 sm:w-16 md:w-[72px] md:h-[72px] rounded-full border-2 border-white bg-[#F6339A] shrink-0 relative transition-transform duration-300 hover:scale-110 z-10 hover:z-40"></div>
+                  </span>
+                  {/* Right horizontal line */}
+                  <span className="w-8 sm:w-16 md:w-20 lg:w-24 h-[2px] bg-white shrink-0"></span>
+                </span>
+                One Platform,
+              </h1>
+            </div>
+
+            {/* Description Container */}
+            <div className="lg:col-span-4 text-left relative pb-4 md:pb-6 pt-6">
+              {/* Badge 1: Floating above the description text */}
+              <div className="absolute -top-6 -left-10 transform rotate-[10deg] bg-[#8B5CF6] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-lg shadow-xl shadow-[#8B5CF6]/20 z-20 select-none animate-bounce-slow">
+                Connect Over Coffee
+              </div>
+
+              <p className="text-zinc-300 text-lg md:text-[20px] leading-relaxed max-w-sm font-normal font-sans">
+                Connect with top-tier talent for a fixed monthly fee. Launch
+                your project today and pause or cancel at any time.
+              </p>
+            </div>
+          </div>
+
+          {/* Title Line 2 */}
+          <h1 className="text-white text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-sans font-semibold leading-[1.05] tracking-tight mt-2 text-left select-none">
+            Limitless Possibilities
+          </h1>
         </div>
       </main>
+
+      {/* Cards Section */}
+      <div className="w-full mt-10 max-w-[1440px] mx-auto px-6 pb-12 md:pb-16 mt-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Card 1: Active Communities (Purple) */}
+          <div className="flex flex-col justify-between h-[320px] p-8 rounded-[32px] bg-[#8B5CF6] text-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#8B5CF6]/30 group cursor-pointer">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium tracking-wide uppercase opacity-90">
+                Active Communities
+              </span>
+              <ArrowUpRight
+                className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                size={20}
+              />
+            </div>
+            <span className="text-[64px] font-semibold tracking-tight leading-none my-auto">
+              12K+
+            </span>
+            <p className="text-sm md:text-base leading-snug opacity-90">
+              Smaller focused spaces built around real interests.
+            </p>
+          </div>
+
+          {/* Card 2: Monthly Discussions (Dark Gray) */}
+          <div className="flex flex-col justify-between h-[320px] p-8 rounded-[32px] bg-[#121212] border border-zinc-800/80 text-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5 group cursor-pointer">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium tracking-wide uppercase text-zinc-400 group-hover:text-zinc-200 transition-colors">
+                Monthly Discussions
+              </span>
+              <ArrowUpRight
+                className="opacity-0 group-hover:opacity-100 text-zinc-400 transition-opacity duration-300"
+                size={20}
+              />
+            </div>
+            <span className="text-[64px] font-semibold tracking-tight leading-none my-auto text-white">
+              3.1M
+            </span>
+            <p className="text-sm md:text-base leading-snug text-zinc-400 group-hover:text-zinc-300 transition-colors">
+              Meaningful conversations happening every month.
+            </p>
+          </div>
+
+          {/* Card 3: Marketplace Listings (Pink) */}
+          <div className="flex flex-col justify-between h-[320px] p-8 rounded-[32px] bg-[#F6339A] text-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#F6339A]/30 group cursor-pointer">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium tracking-wide uppercase opacity-90">
+                Marketplace Listings
+              </span>
+              <ArrowUpRight
+                className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                size={20}
+              />
+            </div>
+            <span className="text-[64px] font-semibold tracking-tight leading-none my-auto">
+              85K+
+            </span>
+            <p className="text-sm md:text-base leading-snug opacity-90">
+              Services, products, and resources shared by members.
+            </p>
+          </div>
+
+          {/* Card 4: Private Conversations (Orange) */}
+          <div className="flex flex-col justify-between h-[320px] p-8 rounded-[32px] bg-[#FF7826] text-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#FF7826]/30 group cursor-pointer">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold tracking-wide uppercase opacity-90">
+                Private Conversations
+              </span>
+              <ArrowUpRight
+                className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                size={20}
+              />
+            </div>
+            <span className="text-[64px] font-semibold tracking-tight leading-none my-auto">
+              4.2M
+            </span>
+            <p className="text-sm md:text-base leading-snug font-medium opacity-90">
+              Connections that move beyond public discussions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Why People Use It Section */}
+      <section className="w-full max-w-[1440px] mx-auto px-6 py-16 md:py-24">
+        <h2 className="text-white text-4xl md:text-5xl lg:text-[64px] font-sans font-semibold text-center mb-16 select-none">
+          Why People Use It
+        </h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Top Row: Left Card (Dark Gray) */}
+          <div className="lg:col-span-7 bg-[#161616] rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 border border-zinc-800/80 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div className="relative shrink-0 flex items-center justify-center">
+              <Sparkles className="w-24 h-24 md:w-32 md:h-32 text-purple-500 stroke-[1]" />
+              <span className="absolute -top-4 right-0 rotate-[15deg] text-orange-400 font-sans text-sm tracking-widest uppercase">
+                Skill
+              </span>
+            </div>
+            <div>
+              <h3 className="text-white text-2xl font-semibold mb-4">
+                Focused Communities
+              </h3>
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
+                Join public, restricted, or private spaces designed around
+                meaningful interests instead of noisy global feeds.
+              </p>
+            </div>
+          </div>
+
+          {/* Top Row: Right Card (Orange) */}
+          <div className="lg:col-span-5 bg-[#FF7826] rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center text-center gap-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-[#FF7826]/10">
+            <div className="relative shrink-0 flex items-center justify-center w-full">
+              <ConciergeBell className="w-24 h-24 md:w-32 md:h-32 text-black stroke-[1]" />
+              <span className="absolute left-4 top-4 -rotate-[30deg] text-black font-sans text-sm tracking-widest uppercase">
+                Request
+              </span>
+            </div>
+            <div>
+              <h3 className="text-black text-2xl font-semibold mb-4">
+                Community Marketplace
+              </h3>
+              <p className="text-black/80 text-sm md:text-base leading-relaxed">
+                Promote services, coaching, digital products, or external
+                platforms directly to your audience.
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Row: Text Block */}
+          <div className="lg:col-span-4 p-4 md:p-8 flex items-center">
+            <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
+              Inter Cafe is a community-first social platform where people
+              connect through shared interests, join meaningful conversations,
+              and discover services in one integrated marketplace. Explore
+              communities, share what matters, and turn engagement into
+              opportunity.
+            </p>
+          </div>
+
+          {/* Bottom Row: Right Card (Pink) */}
+          <div className="lg:col-span-8 bg-[#F6339A] rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-[#F6339A]/10">
+            <div className="relative shrink-0 flex items-center justify-center">
+              <HeartHandshake className="w-32 h-32 md:w-40 md:h-40 text-white stroke-[1]" />
+              <span className="absolute bottom-4 right-0 rotate-[15deg] text-white font-sans text-sm tracking-widest uppercase">
+                Satisfied
+              </span>
+            </div>
+            <div>
+              <h3 className="text-white text-2xl font-semibold mb-4">
+                Safer Conversations
+              </h3>
+              <p className="text-white/90 text-sm md:text-base leading-relaxed">
+                AI-assisted moderation and community controls help create
+                healthier discussions and more intentional interactions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Features Section */}
+      <section className="w-full max-w-[1440px] mx-auto px-6 py-16 md:pb-32">
+        <h2 className="text-white text-4xl md:text-5xl lg:text-[64px] font-sans font-semibold text-center mb-16 select-none">
+          Platform Features
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Feature 1 (Purple) */}
+          <div className="flex flex-col justify-center h-[320px] p-10 md:p-12 rounded-[32px] bg-[#8B5CF6] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-[#8B5CF6]/20">
+            <h3 className="text-3xl font-semibold tracking-tight mb-6">
+              Communities
+            </h3>
+            <p className="text-base leading-relaxed opacity-90 max-w-md">
+              Create and manage communities with custom rules, member roles,
+              approvals, and moderation controls.
+            </p>
+          </div>
+
+          {/* Feature 2 (Dark Gray) */}
+          <div className="flex flex-col justify-center h-[320px] p-10 md:p-12 rounded-[32px] bg-[#161616] text-white border border-zinc-800/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <h3 className="text-3xl font-semibold tracking-tight mb-6">
+              Social Feed
+            </h3>
+            <p className="text-base leading-relaxed text-zinc-400 max-w-md">
+              Share posts, media, discussions, links, reviews, and trending
+              content through personalized feeds.
+            </p>
+          </div>
+
+          {/* Feature 3 (Pink) */}
+          <div className="flex flex-col justify-center h-[320px] p-10 md:p-12 rounded-[32px] bg-[#F6339A] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-[#F6339A]/20">
+            <h3 className="text-3xl font-semibold tracking-tight mb-6">
+              Marketplace
+            </h3>
+            <p className="text-base leading-relaxed opacity-90 max-w-md">
+              List services and discover offerings through a community-powered
+              marketplace with categories and profiles.
+            </p>
+          </div>
+
+          {/* Feature 4 (Orange) */}
+          <div className="flex flex-col justify-center h-[320px] p-10 md:p-12 rounded-[32px] bg-[#FF7826] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-[#FF7826]/20">
+            <h3 className="text-3xl font-semibold tracking-tight mb-6">
+              Messaging
+            </h3>
+            <p className="text-base leading-relaxed font-medium opacity-90 max-w-md">
+              Move conversations into direct messages and group chats with
+              reactions, requests, blocking, and reporting.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section
+        className="w-full max-w-3xl mx-auto px-6 py-16 md:py-24"
+        id="faqs"
+      >
+        <h2 className="text-white text-4xl md:text-5xl lg:text-[56px] font-semibold text-center mb-12 leading-tight tracking-tight">
+          Frequently Asked
+          <br />
+          Questions
+        </h2>
+        <div className="flex flex-col gap-3">
+          {faqs.map((faq, index) => {
+            const isOpen = openFaqIndex === index;
+            return (
+              <div
+                key={index}
+                className="bg-[#161616] rounded-xl overflow-hidden transition-all duration-300"
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                  className="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none"
+                >
+                  <span className="text-white font-medium text-sm md:text-base">
+                    {faq.question}
+                  </span>
+                  <span className="text-zinc-400 shrink-0 ml-4">
+                    {isOpen ? <X size={18} /> : <Plus size={18} />}
+                  </span>
+                </button>
+                {isOpen && (
+                  <div className="px-5 pb-6 md:px-6 md:pb-6">
+                    <p className="text-zinc-500 text-xs md:text-sm leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <footer className="w-full flex flex-col items-center justify-center mt-8">
+        {/* Top Border */}
+        <div className="w-full border-t border-zinc-800/80"></div>
+
+        {/* Footer Content */}
+        <div className="flex flex-col items-center py-16 md:py-24 text-center px-6">
+          {/* Logo & Name */}
+          <div className="flex items-center gap-3 mb-6">
+            <Image
+              src="/logo.png"
+              alt="Inter Cafe Logo"
+              width={48}
+              height={48}
+              className="rounded-xl object-cover shadow-lg"
+            />
+            <span className="text-white text-2xl font-semibold tracking-tight">
+              Inter Cafe
+            </span>
+          </div>
+
+          {/* Slogan */}
+          <h2 className="text-white text-2xl md:text-[28px] font-medium leading-[1.3] mb-8 tracking-wide">
+            One Platform,
+            <br />
+            Limitless Possibilities
+          </h2>
+
+          {/* CTA Button */}
+          <a
+            href="#get-started"
+            className="bg-[#FF7826] hover:bg-[#FF7826]/90 text-white font-semibold text-sm px-8 py-3 rounded-lg transition-colors shadow-lg shadow-[#FF7826]/20"
+          >
+            Get Started
+          </a>
+        </div>
+
+        {/* Bottom Border */}
+        <div className="w-full border-t border-zinc-800/80"></div>
+
+        {/* Copyright Area */}
+        <div className="w-full py-6 text-center">
+          <p className="text-zinc-500 text-[11px] md:text-xs font-medium tracking-wide">
+            © 2026 Inter Dimensional Cafe. All rights reserved
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
