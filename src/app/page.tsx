@@ -2,15 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import {
-  Menu,
-  X,
-  ArrowUpRight,
-  Sparkles,
-  ConciergeBell,
-  HeartHandshake,
-  Plus,
-} from "lucide-react";
+import { Menu, X, ArrowUpRight, Plus } from "lucide-react";
 import Link from "next/link";
 
 const faqs = [
@@ -181,14 +173,14 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <main className="flex-1 w-full max-w-[1440px] mx-auto px-6 pt-8 pb-16 md:pt-16 md:pb-24 flex flex-col justify-center relative">
+      <main className="flex-1 w-full max-w-[1440px] mx-auto px-6 pt-12 pb-20 md:pt-16 md:pb-24 flex flex-col justify-center relative">
         {/* Title Grid */}
         <div className="w-full relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
             {/* Title Line 1 Container */}
             <div className="lg:col-span-8 relative">
               {/* Badge 2: Floating below Platform */}
-              <div className="absolute -bottom-45 left-4 md:left-[10%] transform -rotate-[2deg] bg-[#F6339A] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-lg shadow-xl shadow-[#F6339A]/20 z-20 select-none animate-bounce-slow">
+              <div className="absolute -bottom-36 sm:-bottom-43 left-4 md:left-[10%] transform -rotate-[2deg] bg-[#F6339A] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-lg shadow-xl shadow-[#F6339A]/20 z-20 select-none animate-bounce-slow">
                 Innovative Solutions Group
               </div>
 
@@ -221,17 +213,20 @@ export default function Home() {
                   <span className="w-8 sm:w-16 md:w-20 lg:w-24 h-[2px] bg-white shrink-0"></span>
                 </span>
                 One Platform,
+                <span className="block sm:hidden text-white text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-sans font-semibold leading-[1.05] tracking-tight mt-2 text-left select-none">
+                  Limitless Possibilities
+                </span>
               </h1>
             </div>
 
             {/* Description Container */}
-            <div className="lg:col-span-4 text-left relative pb-4 md:pb-6 pt-6">
+            <div className="lg:col-span-4 text-left relative pb-4 md:pb-6 sm:pt-6">
               {/* Badge 1: Floating above the description text */}
-              <div className="absolute -top-6 -left-10 transform rotate-[10deg] bg-[#8B5CF6] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-lg shadow-xl shadow-[#8B5CF6]/20 z-20 select-none animate-bounce-slow">
+              <div className="absolute -top-56 sm:-top-6 -right-0 sm:-left-10 w-fit transform rotate-[10deg] bg-[#8B5CF6] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-lg shadow-xl shadow-[#8B5CF6]/20 z-20 select-none animate-bounce-slow">
                 Connect Over Coffee
               </div>
 
-              <p className="text-zinc-300 text-lg md:text-[20px] leading-relaxed max-w-sm font-normal font-sans">
+              <p className="text-zinc-300 text-base md:text-[20px] leading-relaxed max-w-sm font-normal font-sans">
                 Connect with top-tier talent for a fixed monthly fee. Launch
                 your project today and pause or cancel at any time.
               </p>
@@ -239,7 +234,7 @@ export default function Home() {
           </div>
 
           {/* Title Line 2 */}
-          <h1 className="text-white text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-sans font-semibold leading-[1.05] tracking-tight mt-2 text-left select-none">
+          <h1 className="hidden sm:block text-white text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-sans font-semibold leading-[1.05] tracking-tight mt-2 text-left select-none">
             Limitless Possibilities
           </h1>
         </div>
@@ -327,25 +322,28 @@ export default function Home() {
       </div>
 
       {/* Why People Use It Section */}
-      <section className="w-full max-w-[1440px] mx-auto px-6 py-16 md:py-24">
-        <h2 className="text-white text-4xl md:text-5xl lg:text-[64px] font-sans font-semibold text-center mb-16 select-none">
+      <section className="w-full max-w-[1160px] mx-auto px-6 py-14 md:py-20 lg:py-24">
+        <h2 className="text-white text-4xl md:text-5xl lg:text-[64px] font-sans font-semibold text-center mb-8 md:mb-14 select-none">
           Why People Use It
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {/* Top Row: Left Card (Dark Gray) */}
-          <div className="lg:col-span-7 bg-[#161616] rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 border border-zinc-800/80 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-            <div className="relative shrink-0 flex items-center justify-center">
-              <Sparkles className="w-24 h-24 md:w-32 md:h-32 text-purple-500 stroke-[1]" />
-              <span className="absolute -top-4 right-0 rotate-[15deg] text-orange-400 font-sans text-sm tracking-widest uppercase">
-                Skill
-              </span>
+          <div className="lg:col-span-6 min-h-[268px] bg-[#191919] rounded-[24px] p-6 md:p-8 flex flex-col sm:flex-row items-center sm:items-center gap-5 md:gap-8 border border-zinc-800/70 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div className="relative w-full max-w-[210px] sm:w-[220px] md:w-[240px] aspect-square shrink-0">
+              <Image
+                src="/Skill.png"
+                alt="Skill illustration"
+                fill
+                sizes="(max-width: 640px) 210px, 240px"
+                className="object-contain"
+              />
             </div>
-            <div>
-              <h3 className="text-white text-2xl font-semibold mb-4">
+            <div className="w-full text-center sm:text-left">
+              <h3 className="text-white text-xl md:text-2xl font-semibold mb-4 leading-tight">
                 Focused Communities
               </h3>
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
+              <p className="text-zinc-300 text-sm md:text-[15px] leading-relaxed max-w-[310px] mx-auto sm:mx-0">
                 Join public, restricted, or private spaces designed around
                 meaningful interests instead of noisy global feeds.
               </p>
@@ -353,18 +351,35 @@ export default function Home() {
           </div>
 
           {/* Top Row: Right Card (Orange) */}
-          <div className="lg:col-span-5 bg-[#FF7826] rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center text-center gap-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-[#FF7826]/10">
-            <div className="relative shrink-0 flex items-center justify-center w-full">
-              <ConciergeBell className="w-24 h-24 md:w-32 md:h-32 text-black stroke-[1]" />
-              <span className="absolute left-4 top-4 -rotate-[30deg] text-black font-sans text-sm tracking-widest uppercase">
-                Request
-              </span>
+          <div className="lg:col-span-4 min-h-[268px] bg-[#FF7826] rounded-[24px] p-6 md:p-8 flex flex-col justify-between overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-[#FF7826]/10">
+            <div className="relative h-[142px] sm:h-[158px] md:h-[170px] -mx-1">
+              <Image
+                src="/Request.png"
+                alt="Request lettering"
+                width={86}
+                height={118}
+                className="absolute left-1 top-1 w-[72px] sm:w-[82px] md:w-[90px] h-auto object-contain"
+              />
+              <Image
+                src="/ring.png"
+                alt="Marketplace service bell"
+                width={172}
+                height={116}
+                className="absolute left-1/2 top-8 w-[138px] sm:w-[160px] md:w-[178px] -translate-x-1/2 object-contain"
+              />
+              <Image
+                src="/hand.png"
+                alt="Pointing hand"
+                width={126}
+                height={96}
+                className="absolute -right-10 -top-12 w-[92px] sm:w-[108px] md:w-[124px] object-contain"
+              />
             </div>
-            <div>
-              <h3 className="text-black text-2xl font-semibold mb-4">
+            <div className="relative z-10">
+              <h3 className="text-white text-xl md:text-2xl font-semibold mb-4 leading-tight">
                 Community Marketplace
               </h3>
-              <p className="text-black/80 text-sm md:text-base leading-relaxed">
+              <p className="text-white text-sm md:text-[15px] leading-relaxed max-w-[360px]">
                 Promote services, coaching, digital products, or external
                 platforms directly to your audience.
               </p>
@@ -372,8 +387,8 @@ export default function Home() {
           </div>
 
           {/* Bottom Row: Text Block */}
-          <div className="lg:col-span-4 p-4 md:p-8 flex items-center">
-            <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
+          <div className="lg:col-span-4 lg:col-start-1 p-1 sm:p-4 lg:py-8 lg:pr-8 flex items-center">
+            <p className="text-zinc-300 text-sm md:text-[15px] leading-relaxed max-w-[440px] mx-auto lg:mx-0 text-center lg:text-left">
               Inter Cafe is a community-first social platform where people
               connect through shared interests, join meaningful conversations,
               and discover services in one integrated marketplace. Explore
@@ -383,18 +398,21 @@ export default function Home() {
           </div>
 
           {/* Bottom Row: Right Card (Pink) */}
-          <div className="lg:col-span-8 bg-[#F6339A] rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-[#F6339A]/10">
-            <div className="relative shrink-0 flex items-center justify-center">
-              <HeartHandshake className="w-32 h-32 md:w-40 md:h-40 text-white stroke-[1]" />
-              <span className="absolute bottom-4 right-0 rotate-[15deg] text-white font-sans text-sm tracking-widest uppercase">
-                Satisfied
-              </span>
+          <div className="lg:col-span-8 bg-[#F6339A] rounded-[24px] p-6 md:p-8 flex flex-col sm:flex-row items-center gap-5 md:gap-9 min-h-[296px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-[#F6339A]/10">
+            <div className="relative w-full max-w-[330px] sm:w-[360px] md:w-[430px] aspect-[1.55] shrink-0">
+              <Image
+                src="/Love Herd.png"
+                alt="Safer conversations illustration"
+                fill
+                sizes="(max-width: 640px) 330px, 430px"
+                className="object-contain"
+              />
             </div>
-            <div>
-              <h3 className="text-white text-2xl font-semibold mb-4">
+            <div className="w-full text-center sm:text-left">
+              <h3 className="text-white text-xl md:text-2xl font-semibold mb-4 leading-tight">
                 Safer Conversations
               </h3>
-              <p className="text-white/90 text-sm md:text-base leading-relaxed">
+              <p className="text-white/90 text-sm md:text-[15px] leading-relaxed max-w-[320px] mx-auto sm:mx-0">
                 AI-assisted moderation and community controls help create
                 healthier discussions and more intentional interactions.
               </p>
