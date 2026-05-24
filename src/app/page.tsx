@@ -180,7 +180,7 @@ export default function Home() {
             {/* Title Line 1 Container */}
             <div className="lg:col-span-8 relative">
               {/* Badge 2: Floating below Platform */}
-              <div className="absolute -bottom-36 sm:-bottom-43 left-4 md:left-[10%] transform -rotate-[2deg] bg-[#F6339A] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-lg shadow-xl shadow-[#F6339A]/20 z-20 select-none animate-bounce-slow">
+              <div className="absolute -bottom-36 sm:-bottom-44 left-4 md:left-[10%] transform -rotate-[2deg] bg-[#F6339A] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-lg shadow-xl shadow-[#F6339A]/20 z-20 select-none animate-bounce-slow">
                 Innovative Solutions Group
               </div>
 
